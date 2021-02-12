@@ -21,7 +21,7 @@ function Materials({ routeSlug }) {
     console.log('material', material)
     return <TouchableOpacity
       key={idx}
-      onPress={() => Actions.push("WebView")}
+      onPress={() => Actions.push("WebViewScene", { material: material })}
       style={[style.classItem, style.shadowBottom]}
     >
       <Image

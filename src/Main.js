@@ -4,6 +4,7 @@ import { Router, Scene, Stack } from "react-native-router-flux";
 import Classes from "./scenes/Classes";
 import Materials from "./scenes/Materials";
 import Hello from "./scenes/Hello";
+import WebViewScene from "./scenes/WebViewScene";
 
 function Main() {
   return (
@@ -13,6 +14,7 @@ function Main() {
           <Scene key="Hello" component={Hello} hideNavBar={true} />
           <Scene key="Classes" component={Classes} hideNavBar={true} />
           <Scene key="Materials" component={Materials} hideNavBar={true} />
+          <Scene key="WebViewScene" component={WebViewScene} hideNavBar={true} />
         </Stack>
       </Router>
     </SafeAreaView>

@@ -1,23 +1,28 @@
 import React from "react";
-import { ScrollView, View, Text, StyleSheet } from "react-native";
+import { ScrollView, View, Text, StyleSheet, Image, SafeAreaView } from "react-native";
 import { colors } from "../../assets/colors";
 import { style } from "../../assets/style";
 import Footer from "./Footer";
 import Header from "./Header";
 
-function Layout({ children, title = null }) {
+function Layout({ children, title = null, icon = null, webView = false }) {
   return (
     <>
       <Header />
-      <ScrollView contentContainerStyle={[style.container]}>
+      <SafeAreaView style={[style.container, { flex: 1 }]}>
         {title && (
           <View style={layoutStyle.titleContainer}>
-            <Text style={layoutStyle.title}>{title}</Text>
+            <View style={layoutStyle.titleRow}>
+              <Text style={layoutStyle.title}>{title}</Text>
+              {icon && <Image source={icon} style={[style.icon30, { marginLeft: 10 }]} />}
+            </View>
             <View style={layoutStyle.titleLine} />
           </View>
         )}
-        {children}
-      </ScrollView>
+        {webView ? children : <ScrollView>
+          {children}
+        </ScrollView>}
+      </SafeAreaView>
       <Footer />
     </>
   );
@@ -26,6 +31,10 @@ function Layout({ children, title = null }) {
 const layoutStyle = StyleSheet.create({
   titleContainer: {
     padding: 15
+  },
+  titleRow: {
+    flexDirection: 'row',
+    justifyContent: 'flex-end'
   },
   title: {
     fontSize: 24,

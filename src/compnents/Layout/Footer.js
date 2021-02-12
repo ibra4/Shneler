@@ -28,7 +28,7 @@ function Footer() {
           <Text>تواصل معنا</Text>
         </TouchableOpacity>
         <TouchableOpacity
-          onPress={() => Actions.push("haaha")}
+          onPress={() => Actions.replace("Hello")}
           style={footerStyles.footerItem}
         >
           <Image
