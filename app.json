@@ -1,12 +1,4 @@
 {
-  "name": "shneler",
-  "displayName": "shneler",
-  "expo": {
-    "name": "shneler",
-    "slug": "shneler",
-    "version": "1.0.0",
-    "assetBundlePatterns": [
-      "**/*"
-    ]
-  }
+  "name": "Shamel",
+  "displayName": "Shamel"
 }
