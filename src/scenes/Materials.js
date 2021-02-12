@@ -17,9 +17,10 @@ function Materials({ routeSlug }) {
     }
   }, [])
 
-  const renderMaterial = (material) => {
+  const renderMaterial = (material, idx) => {
     console.log('material', material)
     return <TouchableOpacity
+      key={idx}
       onPress={() => Actions.push("WebView")}
       style={[style.classItem, style.shadowBottom]}
     >
@@ -34,7 +35,7 @@ function Materials({ routeSlug }) {
   return (
     <Layout title="المواد">
 
-      {materialsList ? materialsList.map(item => renderMaterial(item)) : <Text>Not found !!</Text>}
+      {materialsList ? materialsList.map((item, idx) => renderMaterial(item, idx)) : <Text>Not found !!</Text>}
 
     </Layout>
   );
