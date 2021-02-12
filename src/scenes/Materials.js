@@ -1,82 +1,41 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Image, Text, TouchableOpacity } from "react-native";
 import { Actions } from "react-native-router-flux";
 import { style } from "../assets/style";
 import Layout from "../compnents/Layout/Layout";
+import { GradeMaterials } from '../assets/Data/GradeMaterials'
 
-function Materials() {
+function Materials({ routeSlug }) {
+
+  const [materialsList, setMaterialsList] = useState(null)
+
+  useEffect(() => {
+    if (parseInt(routeSlug) in GradeMaterials) {
+      setMaterialsList(GradeMaterials[parseInt(routeSlug)])
+    } else {
+      alert('not found')
+    }
+  }, [])
+
+  const renderMaterial = (material) => {
+    console.log('material', material)
+    return <TouchableOpacity
+      onPress={() => Actions.push("WebView")}
+      style={[style.classItem, style.shadowBottom]}
+    >
+      <Image
+        source={material.icon}
+        style={style.icon30}
+      />
+      <Text style={style.classItemText}>{material.label}</Text>
+    </TouchableOpacity>
+  }
+
   return (
     <Layout title="المواد">
-      <TouchableOpacity
-        onPress={() => Actions.push("WebView")}
-        style={[style.classItem, style.shadowBottom]}
-      >
-        <Image
-          source={require("../assets/images/ar.png")}
-          style={style.icon30}
-        />
-        <Text style={style.classItemText}>عربي</Text>
-      </TouchableOpacity>
-      <TouchableOpacity
-        onPress={() => Actions.push("WebView")}
-        style={[style.classItem, style.shadowBottom]}
-      >
-        <Image
-          source={require("../assets/images/maths.png")}
-          style={style.icon30}
-        />
-        <Text style={style.classItemText}>رياضيات</Text>
-      </TouchableOpacity>
-      <TouchableOpacity
-        onPress={() => Actions.push("WebView")}
-        style={[style.classItem, style.shadowBottom]}
-      >
-        <Image
-          source={require("../assets/images/en.png")}
-          style={style.icon30}
-        />
-        <Text style={style.classItemText}>انجليزي</Text>
-      </TouchableOpacity>
-      <TouchableOpacity
-        onPress={() => Actions.push("WebView")}
-        style={[style.classItem, style.shadowBottom]}
-      >
-        <Image
-          source={require("../assets/images/bio.png")}
-          style={style.icon30}
-        />
-        <Text style={style.classItemText}>احياء</Text>
-      </TouchableOpacity>
-      <TouchableOpacity
-        onPress={() => Actions.push("WebView")}
-        style={[style.classItem, style.shadowBottom]}
-      >
-        <Image
-          source={require("../assets/images/chem.png")}
-          style={style.icon30}
-        />
-        <Text style={style.classItemText}>كيمياء</Text>
-      </TouchableOpacity>
-      <TouchableOpacity
-        onPress={() => Actions.push("WebView")}
-        style={[style.classItem, style.shadowBottom]}
-      >
-        <Image
-          source={require("../assets/images/phys.png")}
-          style={style.icon30}
-        />
-        <Text style={style.classItemText}>فيزياء</Text>
-      </TouchableOpacity>
-      <TouchableOpacity
-        onPress={() => Actions.push("WebView")}
-        style={[style.classItem, style.shadowBottom]}
-      >
-        <Image
-          source={require("../assets/images/geo.png")}
-          style={style.icon30}
-        />
-        <Text style={style.classItemText}>علوم ارض</Text>
-      </TouchableOpacity>
+
+      {materialsList ? materialsList.map(item => renderMaterial(item)) : <Text>Not found !!</Text>}
+
     </Layout>
   );
 }
