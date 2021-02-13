@@ -18,16 +18,6 @@ function Footer() {
           <Text>الصفوف</Text>
         </TouchableOpacity>
         <TouchableOpacity
-          onPress={() => Actions.push("haaha")}
-          style={footerStyles.footerItem}
-        >
-          <Image
-            source={require("../../assets/images/contact.png")}
-            style={style.icon30}
-          />
-          <Text>تواصل معنا</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
           onPress={() => Actions.replace("Hello")}
           style={footerStyles.footerItem}
         >
@@ -36,16 +26,6 @@ function Footer() {
             style={style.icon30}
           />
           <Text>الرئيسية</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          onPress={() => Actions.push("haaha")}
-          style={footerStyles.footerItem}
-        >
-          <Image
-            source={require("../../assets/images/about.png")}
-            style={style.icon30}
-          />
-          <Text>عنا</Text>
         </TouchableOpacity>
       </View>
     </View>

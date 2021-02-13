@@ -1,4 +1,7 @@
 {
   "name": "Shamel",
-  "displayName": "Shamel"
+  "displayName": "Shamel",
+  "“assetBundlePatterns”": [
+    "src/assets"
+  ]
 }
