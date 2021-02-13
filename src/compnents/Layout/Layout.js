@@ -1,5 +1,5 @@
 import React from "react";
-import { ScrollView, View, Text, StyleSheet, Image, SafeAreaView } from "react-native";
+import { ScrollView, View, Text, StyleSheet, Image, SafeAreaView, I18nManager } from "react-native";
 import { colors } from "../../assets/colors";
 import { style } from "../../assets/style";
 import Footer from "./Footer";
@@ -13,8 +13,8 @@ function Layout({ children, title = null, icon = null, webView = false }) {
         {title && (
           <View style={layoutStyle.titleContainer}>
             <View style={layoutStyle.titleRow}>
+              {icon && <Image source={icon} style={[style.icon30, { [I18nManager.isRTL ? 'marginRight' : 'marginLeft']: 10 }]} />}
               <Text style={layoutStyle.title}>{title}</Text>
-              {icon && <Image source={icon} style={[style.icon30, { marginLeft: 10 }]} />}
             </View>
             <View style={layoutStyle.titleLine} />
           </View>
@@ -30,16 +30,18 @@ function Layout({ children, title = null, icon = null, webView = false }) {
 
 const layoutStyle = StyleSheet.create({
   titleContainer: {
-    padding: 15
+    padding: 15,
+    flexDirection: I18nManager.isRTL ? 'row-reverse' : 'row',
   },
   titleRow: {
-    flexDirection: 'row',
-    justifyContent: 'flex-end'
+    flexDirection: I18nManager.isRTL ? 'row' : 'row-reverse',
+    // direction: 'rtl',
+    width: '100%',
   },
   title: {
     fontSize: 24,
     fontWeight: 'bold',
-    color: colors.primaryBlue
+    color: colors.primaryBlue,
   },
   titleLine: {
     height: 2,

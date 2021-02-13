@@ -1,3 +1,5 @@
+import { I18nManager } from "react-native";
+
 export const style = {
   container: {
     padding: 15,
@@ -27,7 +29,7 @@ export const style = {
     elevation: 5,
   },
   classItem: {
-    flexDirection: "row-reverse",
+    flexDirection: I18nManager.isRTL ? 'row' : 'row-reverse',
     justifyContent: "flex-start",
     alignItems: "center",
     padding: 15,

@@ -18,7 +18,6 @@ function Materials({ routeSlug }) {
   }, [])
 
   const renderMaterial = (material, idx) => {
-    console.log('material', material)
     return <TouchableOpacity
       key={idx}
       onPress={() => Actions.push("WebViewScene", { material: material })}

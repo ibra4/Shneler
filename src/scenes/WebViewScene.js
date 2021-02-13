@@ -1,8 +1,7 @@
 import React from 'react'
 import Layout from '../compnents/Layout/Layout'
-import { ActivityIndicator, StyleSheet, Text, View } from 'react-native'
+import { ActivityIndicator, StyleSheet, View } from 'react-native'
 import { WebView } from 'react-native-webview';
-import { style } from '../assets/style';
 
 function WebViewScene({ material }) {
 
@@ -19,17 +18,11 @@ function WebViewScene({ material }) {
 
     return (
         <Layout title={material.label} icon={material.icon} webView>
-            {/* <WebView source={{ uri: material.url }} /> */}
             <WebView
-                //Loading URL
                 source={{ uri: material.url }}
-                //Enable Javascript support
                 javaScriptEnabled={true}
-                //For the Cache
                 domStorageEnabled={true}
-                //View to show while loading the webpage
                 renderLoading={ActivityIndicatorElement}
-                //Want to show the view or not
                 startInLoadingState={true}
             />
         </Layout>
